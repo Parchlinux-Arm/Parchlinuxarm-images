@@ -31,7 +31,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y parted wget dosfstools zip arch-install-scripts aria2 gh p7zip
+      run: sudo apt-get update && sudo apt-get install -y parted wget dosfstools zip arch-install-scripts aria2 gh
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
       with:
@@ -57,7 +57,7 @@ jobs:
     - name: Compress image
       run: | 
           mkdir image_parts
-          7z -v1000m a "image_parts/${{ steps.rename-image.outputs.image_name }}.zip" "${{ steps.rename-image.outputs.image_name }}"
+          zip -r "image_parts/${{ steps.rename-image.outputs.image_name }}.zip" "${{ steps.rename-image.outputs.image_name }}"
     - name: Upload image
       run: |
            sha256sum image_parts/* > image_parts/sha256sums.${{ matrix.arch }}.txt
