@@ -57,7 +57,7 @@ cleanup() {
 trap cleanup EXIT
 
 echo "==> Downloading Arch Linux ARM tarball (${file})..."
-[ ! -f "${file}" ] && wget --quiet "${base_url}/${file}"
+[ ! -f "${file}" ] && aria2c "${base_url}/${file}"
 
 echo "==> Creating image..."
 dd if=/dev/zero of="${image}" bs=1 seek="${size}" count=0
