@@ -1,4 +1,4 @@
-# Arch Linux ARM Images
+# Parch Linux ARM Images
 
 [![Build Images](https://github.com/fwcd/archlinux-arm-images/actions/workflows/build-images.yml/badge.svg)](https://github.com/fwcd/archlinux-arm-images/actions/workflows/build-images.yml)
 
