@@ -25,7 +25,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y parted wget dosfstools zip arch-install-scripts
+      run: sudo apt-get update && sudo apt-get install -y parted wget dosfstools zip arch-install-scripts aria2
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
       with:
