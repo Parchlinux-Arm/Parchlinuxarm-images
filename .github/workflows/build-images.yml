@@ -45,7 +45,7 @@ jobs:
       id: rename-image
       run: |
         image_in_name="archlinux-${{ matrix.arch }}.img"
-        image_out_name="archlinux-${{ matrix.arch }}-${{ matrix.flavor }}-$(date '+%Y-%m-%d').img"
+        image_out_name="Parchlinux-${{ matrix.arch }}-${{ matrix.flavor }}-$(date '+%Y-%m-%d').img"
         mv "$image_in_name" "$image_out_name"
         echo "image_name=$image_out_name" >> "$GITHUB_OUTPUT"
     - name: Compress image
