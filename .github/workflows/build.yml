@@ -57,8 +57,8 @@ jobs:
     - name: Compress image
       run: | 
           mkdir image_parts
-          7z -v1000m a image_parts/"${{ steps.rename-image.outputs.image_name }}.zip" "${{ steps.rename-image.outputs.image_name }}"
+          7z -v1000m a "image_parts/${{ steps.rename-image.outputs.image_name }}.zip" "${{ steps.rename-image.outputs.image_name }}"
     - name: Upload image
       run: |
-           sha256sum image_parts/* > image_parts/sha256sums.txt
+           sha256sum image_parts/* > image_parts/sha256sums.${{ matrix.arch }}.txt
            gh release upload ${{ github.event.release.tag_name }} ./image_parts/* -R ${{ github.repository }}
