@@ -3,12 +3,10 @@
 name: Build Images
 
 on:
-  push:
-  workflow_dispatch:
-  workflow_run:
-    workflows: ['Trigger Build']
-    types: [completed]
-    
+  release:
+    types:
+      - created
+
 env:
   api_key: ${{ secrets.GITHUB_TOKEN }}
   name: ${{ github.event.repository.name }}
@@ -17,6 +15,8 @@ env:
   
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -31,7 +31,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y parted wget dosfstools zip arch-install-scripts aria2
+      run: sudo apt-get update && sudo apt-get install -y parted wget dosfstools zip arch-install-scripts aria2 github-cli
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
       with:
@@ -57,28 +57,5 @@ jobs:
     - name: Compress image
       run: zip -v "${{ steps.rename-image.outputs.image_name }}"{.zip,}
     - name: Upload image
-      uses: actions/upload-artifact@v3
-      with:
-        name: "${{ steps.rename-image.outputs.image_name }}.zip"
-        path: "${{ steps.rename-image.outputs.image_name }}.zip"
-    - name: Create release (if needed)
-      if: github.ref == 'refs/heads/main'
-      id: create-release
-      env:
-        GH_TOKEN: ${{ github.token }}
-        GH_REPO: ${{ github.repository }}
       run: |
-        snapshot="$(date '+%Y-%m-%d')"
-        tag="$snapshot"
-        echo "snapshot=$snapshot" >> "$GITHUB_OUTPUT"
-        echo "tag=$tag" >> "$GITHUB_OUTPUT"
-        gh release create "$tag" --title "$snapshot" || true
-    - name: Upload release assets
-      if: github.ref == 'refs/heads/main'
-      env:
-        GH_TOKEN: ${{ github.token }}
-        GH_REPO: ${{ github.repository }}
-      run: |
-        tag="${{ steps.create-release.outputs.tag }}"
-        archive="${{ steps.rename-image.outputs.image_name }}.zip"
-        gh release upload "$tag" "$archive" --clobber
+           gh release upload ${{ github.event.release.tag_name }} "${{ steps.rename-image.outputs.image_name }}"{.zip,} -R ${{ github.repository }}
