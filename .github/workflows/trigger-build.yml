@@ -1,12 +1,7 @@
 name: Trigger Build
 
 on:
-  release:
-    types:
-      - created
-  # Run every Sunday at 05:10 (to avoid the peak times)
-  #schedule:
- # - cron: '10 5 * * 0'
+  push:
   workflow_dispatch:
 
 jobs:
