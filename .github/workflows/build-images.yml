@@ -15,13 +15,9 @@ jobs:
     strategy:
       matrix:
         arch: ['aarch64', 'rpi-armv7', 'rpi-aarch64']
-        flavor: ['vanilla']
-        include:
-        - arch: rpi-aarch64
-          flavor: avahi
-        - arch: rpi-aarch64
-          flavor: fwcd
+        flavor: ['fwcd']
 
+        
     steps:
     - uses: actions/checkout@v3
     - name: Configure Git user
