@@ -13,6 +13,10 @@ cat <<EOF >> /etc/pacman.conf
 [archsink]
 Server = https://github.com/archsink/\$arch/releases/latest/download
 SigLevel = Never
+
+[ppr]
+Server = https://raw.githubusercontent.com/parchlinux/ppr/main/aarch64/
+SigLevel = Never
 EOF
 
 # Enable parallel downloads
@@ -20,6 +24,9 @@ sed -i 's/#\(ParallelDownloads \)/\1/g' /etc/pacman.conf
 
 # Install useful packages
 packages=(
+  parch-branding
+  vazirmatn-fonts
+  parch-emoji-ios
   arch-install-scripts
   avahi
   curl
