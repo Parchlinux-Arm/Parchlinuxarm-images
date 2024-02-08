@@ -17,6 +17,7 @@ SigLevel = Never
 [ppr]
 Server = https://raw.githubusercontent.com/parchlinux/ppr/main/aarch64/
 SigLevel = Never
+
 EOF
 
 # Enable parallel downloads
