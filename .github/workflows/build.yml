@@ -22,6 +22,10 @@ jobs:
       matrix:
         arch: ['aarch64', 'rpi-aarch64']
         flavor: ['fwcd']
+        include:
+        - arch: rpi-aarch64
+          flavor: xfce
+
 
         
     steps:
