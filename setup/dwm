@@ -27,7 +27,6 @@ sed -i 's/#\(ParallelDownloads \)/\1/g' /etc/pacman.conf
 packages=(
   volumeicon
   network-manager-applet
-  dmscripts-git
   parch-dwm-dots
   thunar
   picom
