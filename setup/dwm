@@ -25,8 +25,15 @@ sed -i 's/#\(ParallelDownloads \)/\1/g' /etc/pacman.conf
 
 # Install useful packages
 packages=(
-  xfce4
-  xfce4-goodies
+  volumeicon
+  network-manager-applet
+  parch-dwm-dots
+  thunar
+  picom
+  feh
+  parch-wallpapers
+  nitrogen
+  flameshot
   sddm
   parch-branding
   noto-fonts

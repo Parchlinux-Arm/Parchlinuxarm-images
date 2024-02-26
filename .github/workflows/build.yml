@@ -25,6 +25,8 @@ jobs:
         include:
         - arch: rpi-aarch64
           flavor: xfce
+        - arch: rpi-aarch64
+          flavor: dwm
 
 
         
