@@ -27,6 +27,7 @@ sed -i 's/#\(ParallelDownloads \)/\1/g' /etc/pacman.conf
 packages=(
   volumeicon
   network-manager-applet
+  dmscripts-git
   parch-dwm-dots
   thunar
   picom
@@ -34,6 +35,10 @@ packages=(
   parch-wallpapers
   nitrogen
   flameshot
+  dunst
+  lxqt-policykit
+  arc-gtk-theme
+  papirus-icon-theme
   sddm
   parch-branding
   noto-fonts
@@ -61,6 +66,20 @@ packages=(
   vim
 )
 pacman -Syu --noconfirm --needed "${packages[@]}"
+
+#dwm dot files
+
+cd /tmp
+git clone https://github.com/parchlinux/dwm-dots.git
+cd dwm-dots
+cd etc/skel
+mv config /home/alarm/.config
+mv dwm /home/alarm/.dwm
+chmod 777 /home/alarm/.config
+chmod 777 /home/alarm/.dwm
+chmod +x /home/alarm/.dwm/autostart.sh
+
+rm -rf /tmp/dwm-dots
 
 # Enable services
 systemctl enable avahi-daemon iwd
