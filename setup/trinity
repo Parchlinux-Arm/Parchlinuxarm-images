@@ -21,7 +21,7 @@ Server = https://raw.githubusercontent.com/parchlinux-arm/ppr/main/aarch64/
 SigLevel = Never
 
 [trinity]
-Server = https://mirror.ppa.trinitydesktop.org/trinity/archlinux/$arch
+Server = https://mirror.ppa.trinitydesktop.org/trinity/archlinux/\$arch
 
 
 EOF
