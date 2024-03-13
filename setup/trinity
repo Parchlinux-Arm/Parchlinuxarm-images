@@ -22,7 +22,7 @@ SigLevel = Never
 
 [trinity]
 Server = https://mirror.ppa.trinitydesktop.org/trinity/archlinux/\$arch
-
+SigLevel = Never
 
 EOF
 
