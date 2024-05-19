@@ -26,8 +26,6 @@ jobs:
         - arch: rpi-aarch64
           flavor: xfce
         - arch: rpi-aarch64
-          flavor: dwm
-        - arch: rpi-aarch64
           flavor: trinity
 
 
