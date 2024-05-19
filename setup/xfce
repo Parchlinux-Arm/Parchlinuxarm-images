@@ -50,13 +50,15 @@ packages=(
   tmux
   tree
   neofetch-git
+  networkmanager
+  network-manager-applet
   zsh
   vim
 )
 pacman -Syu --noconfirm --needed "${packages[@]}"
 
 # Enable services
-systemctl enable avahi-daemon iwd
+systemctl enable avahi-daemon NetworkManager
 systemctl enable sddm
 
 

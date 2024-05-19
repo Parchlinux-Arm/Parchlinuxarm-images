@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         arch: ['aarch64', 'rpi-aarch64']
-        flavor: ['fwcd']
+        flavor: ['barebone']
         include:
         - arch: rpi-aarch64
           flavor: xfce

@@ -47,11 +47,13 @@ packages=(
   neofetch-git
   zsh
   vim
+  fastfetch
 )
 pacman -Syu --noconfirm --needed "${packages[@]}"
 
 # Enable services
 systemctl enable avahi-daemon iwd
+
 
 # Prepare system for containers (e.g. for use with K3s)
 # https://github.com/k3s-io/k3s/issues/2067#issuecomment-664048424

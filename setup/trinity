@@ -55,11 +55,14 @@ packages=(
   vim
   tde-tdebase
   sddm
+  networkmanager
+  network-manager-applet
+  fastfetch
 )
 pacman -Syu --noconfirm --needed "${packages[@]}"
 
 # Enable services
-systemctl enable avahi-daemon iwd
+systemctl enable avahi-daemon NetworkManager
 systemctl enable sddm
 
 # Prepare system for containers (e.g. for use with K3s)
